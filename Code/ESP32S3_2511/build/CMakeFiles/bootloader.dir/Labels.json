@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}

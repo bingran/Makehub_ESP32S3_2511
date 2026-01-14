@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/http_parser
+# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/http_parser
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

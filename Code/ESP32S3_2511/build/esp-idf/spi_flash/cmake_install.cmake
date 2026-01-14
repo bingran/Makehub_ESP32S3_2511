@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/spi_flash
+# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/spi_flash
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

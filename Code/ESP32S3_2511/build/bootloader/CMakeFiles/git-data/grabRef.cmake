@@ -18,7 +18,7 @@ set(HEAD_HASH)
 file(READ "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/bootloader/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
 
 string(STRIP "${HEAD_CONTENTS}" HEAD_CONTENTS)
-set(GIT_DIR "C:/Users/bingr/esp/v5.4.1/esp-idf/.git")
+set(GIT_DIR "C:/Users/bingr/esp/esp-idf-5.4.1/.git")
 # handle git-worktree
 if(EXISTS "${GIT_DIR}/commondir")
 	file(READ "${GIT_DIR}/commondir" GIT_DIR_NEW LIMIT 1024)

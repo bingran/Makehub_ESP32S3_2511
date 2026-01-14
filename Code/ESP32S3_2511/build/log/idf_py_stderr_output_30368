@@ -1,6 +1,0 @@
-[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
-[0;33m--- Using \\.\COM6 instead...[0m
-[0;33m--- esp-idf-monitor 1.9.0 on \\.\COM6 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0m--- 0x42009ef1: [0;33ms_test_psram[0m[0m at [0;32mC:/Users/bingr/esp/v5.4.1/esp-idf/components/esp_psram/esp_psram.c[0m[0m:[1;31m479[0m
-[0m

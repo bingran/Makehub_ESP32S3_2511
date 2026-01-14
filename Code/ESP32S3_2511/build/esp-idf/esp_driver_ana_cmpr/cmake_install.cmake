@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/esp_driver_ana_cmpr
+# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/esp_driver_ana_cmpr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

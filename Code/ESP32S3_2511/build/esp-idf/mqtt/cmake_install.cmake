@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/mqtt
+# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/mqtt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

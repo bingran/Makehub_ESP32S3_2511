@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/esp_lcd
+# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/esp_lcd
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

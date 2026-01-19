@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/nvs_sec_provider
+# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/nvs_sec_provider
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1
+# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -555,6 +555,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/esp-idf/espressif__led_strip/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/esp-idf/ssd1306/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

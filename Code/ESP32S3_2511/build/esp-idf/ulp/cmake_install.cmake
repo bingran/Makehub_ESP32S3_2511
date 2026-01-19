@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/ulp
+# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/ulp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/bingr/esp/esp-idf-5.4.1/components/esp_system/port/soc/esp32s3
+# Install script for directory: C:/Users/bingr/esp/v5.4.1/esp-idf/components/esp_system/port/soc/esp32s3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

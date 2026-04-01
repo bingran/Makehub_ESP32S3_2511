@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "ESP32S3_2511",
-    "project_version":    "0e3f917-dirty",
+    "project_version":    "21f7bac-dirty",
     "project_path":       "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511",
     "idf_path":           "C:/Users/bingr/esp/v5.4.1/esp-idf",
     "build_dir":          "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build",
@@ -1206,7 +1206,7 @@
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [ "esp_common", "esp_wifi", "nvs_flash", "espressif__led_strip" ],
-            "priv_reqs": [ "spi_flash", "esp_adc", "esp_driver_gpio", "esp_psram", "ssd1306", "driver", "espressif__led_strip" ],
+            "priv_reqs": [ "spi_flash", "esp_adc", "esp_driver_gpio", "esp_psram", "ssd1306", "driver", "fatfs", "espressif__led_strip" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__led_strip" ],
             "file": "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build/esp-idf/main/libmain.a",
@@ -2887,7 +2887,7 @@
             "dir": "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/main",
             "lib": "__idf_main",
             "reqs": [ "esp_common", "esp_wifi", "nvs_flash", "espressif__led_strip" ],
-            "priv_reqs": [ "spi_flash", "esp_adc", "esp_driver_gpio", "esp_psram", "ssd1306", "driver", "espressif__led_strip" ],
+            "priv_reqs": [ "spi_flash", "esp_adc", "esp_driver_gpio", "esp_psram", "ssd1306", "driver", "fatfs", "espressif__led_strip" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__led_strip" ],
             "include_dirs": [ "." ]

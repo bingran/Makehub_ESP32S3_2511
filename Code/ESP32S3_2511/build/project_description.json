@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "ESP32S3_2511",
-    "project_version":    "21f7bac-dirty",
+    "project_version":    "e502c19-dirty",
     "project_path":       "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511",
     "idf_path":           "C:/Users/bingr/esp/v5.4.1/esp-idf",
     "build_dir":          "C:/Freelance/MakerHub/Release/Makehub_ESP32S3_2511/Code/ESP32S3_2511/build",

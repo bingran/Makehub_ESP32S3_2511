@@ -27,7 +27,7 @@
 static const char *TAG = "MAIN";
 
 // Forward declarations
-static void display_gps_battery(void);
+static void display_gps_battery_safe(void);
 esp_err_t sd_card_init(void);
 esp_err_t sd_save_gps_log(float lat, float lon, float battery);
 
@@ -189,6 +189,14 @@ static bool uart_ready = false;
 static float g_gps_lat = 0.0f;
 static float g_gps_lon = 0.0f;
 static float g_battery_v = 0.0f;
+
+// Previous values for differential display updates
+static float g_gps_lat_prev = -999.0f;
+static float g_gps_lon_prev = -999.0f;
+static float g_battery_v_prev = -1.0f;
+
+// OLED update control - prevent flickering
+static SemaphoreHandle_t oled_mutex = NULL;
 
 // SD Card globals
 static sdmmc_card_t *sd_card = NULL;
@@ -476,7 +484,7 @@ static void gps_task(void *arg)
                     g_gps_lat = lat;  // Update global for OLED display
                     g_gps_lon = lon;  // Update global for OLED display
                     ESP_LOGI(TAG, "Parsed GPS: lat=%.6f lon=%.6f", lat, lon);
-                    display_gps_battery();  // Update OLED with GPS and battery info
+                    display_gps_battery_safe();  // Update OLED with GPS and battery info (rate-limited)
                     // Log GPS data to SD card
                     if (sd_card) {
                         sd_save_gps_log(lat, lon, g_battery_v);
@@ -533,23 +541,55 @@ float battery_get_voltage(void)
     return (mv * 2.0f) / 1000.0f;
 }
 
-// Display GPS coordinates and battery voltage on OLED
-static void display_gps_battery(void)
+// Display GPS coordinates and battery voltage on OLED with differential updates (only changed lines)
+static void display_gps_battery_safe(void)
 {
+    if (!oled_mutex) return;
+
+    // Check if ANY value changed - if not, skip update entirely
+    if (g_gps_lat == g_gps_lat_prev && 
+        g_gps_lon == g_gps_lon_prev && 
+        g_battery_v == g_battery_v_prev) {
+        return;  // No change detected, skip update
+    }
+
+    if (xSemaphoreTake(oled_mutex, pdMS_TO_TICKS(100)) != pdTRUE) {
+        return;  // Could not acquire mutex, skip this update
+    }
+
     char buf[40];
-    oled_clear();
     
-    // Line 0: Latitude
-    snprintf(buf, sizeof(buf), "Lat: %+.4f", g_gps_lat);
-    oled_show_string(0, 0, buf);
+    // Update Line 0: Latitude (only if changed)
+    if (g_gps_lat != g_gps_lat_prev) {
+        oled_set_pos(0, 0);
+        uint8_t clear_line[128] = {0};
+        oled_data(clear_line, 128);  // Clear just this line
+        snprintf(buf, sizeof(buf), "Lat: %+.4f", g_gps_lat);
+        oled_show_string(0, 0, buf);
+        g_gps_lat_prev = g_gps_lat;
+    }
     
-    // Line 1: Longitude
-    snprintf(buf, sizeof(buf), "Lon: %+.4f", g_gps_lon);
-    oled_show_string(0, 1, buf);
+    // Update Line 1: Longitude (only if changed)
+    if (g_gps_lon != g_gps_lon_prev) {
+        oled_set_pos(0, 1);
+        uint8_t clear_line[128] = {0};
+        oled_data(clear_line, 128);  // Clear just this line
+        snprintf(buf, sizeof(buf), "Lon: %+.4f", g_gps_lon);
+        oled_show_string(0, 1, buf);
+        g_gps_lon_prev = g_gps_lon;
+    }
     
-    // Line 2: Battery
-    snprintf(buf, sizeof(buf), "Batt: %.2fV", g_battery_v);
-    oled_show_string(0, 2, buf);
+    // Update Line 2: Battery (only if changed)
+    if (g_battery_v != g_battery_v_prev) {
+        oled_set_pos(0, 2);
+        uint8_t clear_line[128] = {0};
+        oled_data(clear_line, 128);  // Clear just this line
+        snprintf(buf, sizeof(buf), "Batt: %.2fV", g_battery_v);
+        oled_show_string(0, 2, buf);
+        g_battery_v_prev = g_battery_v;
+    }
+
+    xSemaphoreGive(oled_mutex);
 }
 
 /* ================= SD CARD ================= */
@@ -780,11 +820,8 @@ void app_main(void)
     gpio_set_level(GPS_EN, true);
 
     oled_init();
-    oled_show_string(0, 0, "!!!!");
-    oled_show_string(0, 2, "----");
-    oled_show_string(0, 4, "!-!-");
-    oled_show_string(0, 6, "HELLO");
-
+    oled_show_string(0, 0, "MAKER");
+    oled_show_string(0, 2, "HUB!");
 
     ret = nvs_flash_init();                                         
 
@@ -855,6 +892,12 @@ void app_main(void)
 
     battery_adc_init();
 
+    // Create mutex for OLED display synchronization
+    oled_mutex = xSemaphoreCreateMutex();
+    if (!oled_mutex) {
+        ESP_LOGE(TAG, "Failed to create OLED mutex");
+    }
+
     // Initialize SD card
     if (sd_card_init() == ESP_OK) {
         sd_list_files();
@@ -893,7 +936,7 @@ void app_main(void)
         float vbat = battery_get_voltage();
         g_battery_v = vbat;  // Update global for OLED display
         ESP_LOGI(TAG, "Battery = %.2f V", vbat);
-        display_gps_battery();  // Update OLED with current battery and last GPS data
+        display_gps_battery_safe();  // Update OLED with current battery and last GPS data (rate-limited)
         vTaskDelay(1000);
     }
 }
